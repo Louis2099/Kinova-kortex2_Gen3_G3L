@@ -87,10 +87,19 @@ def example_angular_action_movement(base):
     actuator_count = base.GetActuatorCount()
 
     # Place arm straight up
+    # ref_joint_pos_sim = [30, -30, 30, -30, -30, -30, -30]
+    # ref_joint_pos_real = [30, 330, 30, 330, 330, 330, 330]
+
+    # ref_joint_pos_sim = [180, 16, 180, 265, 180, 215, 89]
+    # ref_joint_pos_sim = [ -0.78012408, 16.06411722, 180.94169274, -85.11402822, -0.3298034, -35.1588299, 89.95437384]
+    ref_joint_pos_sim = [ 0.78012408, 16.06411722, 180.94169274, -85.11402822, -0.3298034, -35.1588299, 89.95437384]
+    # ref_joint_pos_real = [180.78012408, 16.06411722, 180.94169274, 265.11402822, 180.3298034, 215.1588299, 89.95437384]
+    
     for joint_id in range(actuator_count.count):
         joint_angle = action.reach_joint_angles.joint_angles.joint_angles.add()
         joint_angle.joint_identifier = joint_id
-        joint_angle.value = 0
+        # joint_angle.value = 0
+        joint_angle.value = ref_joint_pos_sim[joint_id]
 
     e = threading.Event()
     notification_handle = base.OnNotificationActionTopic(
@@ -168,8 +177,8 @@ def main():
         success = True
 
         success &= example_move_to_home_position(base)
-        success &= example_cartesian_action_movement(base, base_cyclic)
-        success &= example_angular_action_movement(base)
+        # success &= example_cartesian_action_movement(base, base_cyclic)
+        # success &= example_angular_action_movement(base)
 
         # You can also refer to the 110-Waypoints examples if you want to execute
         # a trajectory defined by a series of waypoints in joint space or in Cartesian space

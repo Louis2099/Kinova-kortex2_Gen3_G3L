@@ -89,7 +89,8 @@ def example_send_joint_speeds(base):
     actuator_count = base.GetActuatorCount().count
     # The 7DOF robot will spin in the same direction for 10 seconds
     if actuator_count == 7:
-        speeds = [SPEED, 0, -SPEED, 0, SPEED, 0, -SPEED]
+        # speeds = [SPEED, 0, -SPEED, 0, SPEED, 0, -SPEED]
+        speeds = [SPEED, 0, 0, 0, 0, 0, 0]
         i = 0
         for speed in speeds:
             joint_speed = joint_speeds.joint_speeds.add()

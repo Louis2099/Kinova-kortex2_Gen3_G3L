@@ -100,7 +100,7 @@ def move_to_protection_zone(base):
     base.SendTwistCommand(command)
 
     # Let time for twist to be executed
-    time.sleep(4)
+    time.sleep(0.02)
 
     print ("Stopping the robot...")
     base.Stop()
@@ -199,26 +199,27 @@ def main():
 
         # Move without the protection zone
         print_protection_zones(base)
-        move_in_front_of_protection_zone(base)
+        # move_in_front_of_protection_zone(base)
         move_to_protection_zone(base)
         move_to_home_position(base)
+        # move_to_home_position(base)
 
-        # Move with the protection zone
-        print_protection_zones(base)
-        move_in_front_of_protection_zone(base)
+        # # Move with the protection zone
+        # print_protection_zones(base)
+        # move_in_front_of_protection_zone(base)
 
-        # Add the protection zone
-        handle = create_protection_zone(base)
+        # # Add the protection zone
+        # handle = create_protection_zone(base)
 
-        move_to_protection_zone(base)
-        move_to_home_position(base)
+        # move_to_protection_zone(base)
+        # move_to_home_position(base)
 
-        # Delete the protection zone
-        base.DeleteProtectionZone(handle)
+        # # Delete the protection zone
+        # base.DeleteProtectionZone(handle)
 
-        # Print final protection zones
-        # The example protection zone should be removed
-        print_protection_zones(base)
+        # # Print final protection zones
+        # # The example protection zone should be removed
+        # print_protection_zones(base)
 
 if __name__ == "__main__":
     main()

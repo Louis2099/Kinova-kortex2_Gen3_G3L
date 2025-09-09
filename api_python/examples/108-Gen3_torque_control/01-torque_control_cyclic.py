@@ -155,7 +155,6 @@ class TorqueExample:
             print("Timeout on action notification wait")
         return finished
 
-        return True
 
     def InitCyclic(self, sampling_time_cyclic, t_end, print_stats):
 
